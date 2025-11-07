@@ -48,7 +48,7 @@ internal fun SignUpScreen(
 
         Text(text = "Регистрация", style = MaterialTheme.typography.headlineMedium)
 
-        VerticalSpacer(dimensions.paddings.paddingXL)
+//        VerticalSpacer(dimensions.paddings.paddingXL)
 
         Text(
             modifier = Modifier.fillMaxWidth(),
@@ -56,7 +56,7 @@ internal fun SignUpScreen(
             style = subTitleStyle
         )
 
-        VerticalSpacer(dimensions.paddings.paddingM)
+//        VerticalSpacer(dimensions.paddings.paddingM)
 
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
@@ -69,7 +69,7 @@ internal fun SignUpScreen(
         )
         firstNameError?.let { Text(it, color = errorColor, style = errorStyle) }
 
-        VerticalSpacer(dimensions.paddings.paddingM)
+//        VerticalSpacer(dimensions.paddings.paddingM)
 
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
@@ -82,7 +82,7 @@ internal fun SignUpScreen(
         )
         lastNameError?.let { Text(it, color = errorColor, style = errorStyle) }
 
-        VerticalSpacer(dimensions.paddings.paddingXL)
+//        VerticalSpacer(dimensions.paddings.paddingXL)
 
         Text(
             modifier = Modifier.fillMaxWidth(),
@@ -90,7 +90,7 @@ internal fun SignUpScreen(
             style = subTitleStyle
         )
 
-        VerticalSpacer(dimensions.paddings.paddingM)
+//        VerticalSpacer(dimensions.paddings.paddingM)
 
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
@@ -104,7 +104,7 @@ internal fun SignUpScreen(
         )
         emailError?.let { Text(it, color = errorColor, style = errorStyle) }
 
-        VerticalSpacer(dimensions.paddings.paddingM)
+//        VerticalSpacer(dimensions.paddings.paddingM)
 
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
@@ -119,7 +119,7 @@ internal fun SignUpScreen(
         )
         passwordError?.let { Text(it, color = errorColor, style = errorStyle) }
 
-        VerticalSpacer(dimensions.paddings.paddingM)
+//        VerticalSpacer(dimensions.paddings.paddingM)
 
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
@@ -134,7 +134,7 @@ internal fun SignUpScreen(
         )
         confirmPasswordError?.let { Text(it, color = errorColor, style = errorStyle) }
 
-        VerticalSpacer(dimensions.paddings.paddingXL)
+//        VerticalSpacer(dimensions.paddings.paddingXL)
 
         Button(
             modifier = Modifier.defaultMinSize(
@@ -166,7 +166,7 @@ internal fun SignUpScreen(
             Text("Зарегистрироваться")
         }
 
-        VerticalSpacer(dimensions.paddings.paddingS)
+//        VerticalSpacer(dimensions.paddings.paddingS)
 
         Button(
             modifier = Modifier.defaultMinSize(
@@ -198,7 +198,7 @@ internal fun SignUpScreen(
             Text("Зарегистрироваться через Object")
         }
 
-        VerticalSpacer(dimensions.paddings.paddingS)
+//        VerticalSpacer(dimensions.paddings.paddingS)
 
         Button(
             modifier = Modifier.defaultMinSize(

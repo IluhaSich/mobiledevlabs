@@ -41,7 +41,7 @@ internal fun CharacterCard(
             .clip(RoundedCornerShape(dimensions.cornerShapes.shapeM))
             .border(
                 width = dimensions.other.borderWidth,
-                color = MaterialTheme.colorScheme.secondary,
+                color = MaterialTheme.colorScheme.onBackground,
                 shape = RoundedCornerShape(dimensions.cornerShapes.shapeM)
             )
             .background(MaterialTheme.colorScheme.background)
