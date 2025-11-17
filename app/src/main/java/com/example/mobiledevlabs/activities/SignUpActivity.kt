@@ -66,6 +66,9 @@ class SignUpActivity : BaseActivity() {
     }
 
     private fun onLogin() {
+        setResult(RESULT_OK, Intent())
+        finish()
+
         val intent = Intent(this, SignInActivity::class.java)
         signInLauncher.launch(intent)
     }
