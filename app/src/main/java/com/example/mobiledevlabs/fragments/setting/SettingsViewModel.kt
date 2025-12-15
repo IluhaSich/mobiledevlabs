@@ -21,7 +21,8 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
 
     private val repo = SettingsRepository(application)
     private val prefs = UserPreferences(application)
-    private val characterRepo = CharacterRepository(HttpClientProvider.client)
+    private val characterRepo = CharacterRepository(HttpClientProvider.client, getApplication())
+
 
     val darkTheme = repo.darkThemeFlow.stateIn(
         viewModelScope,
@@ -54,7 +55,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
             try {
                 isBackupLoading.value = true
 
-                val characters: List<Character> = characterRepo.getCharacters(1201, 1250)
+                val characters: List<Character> = characterRepo.loadFromApi(1201, 1250)
 
                 val backupText = characters.toBackupText()
 

@@ -4,43 +4,67 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mobiledevlabs.data.CharacterRepository
 import com.example.mobiledevlabs.data.model.Character
-import com.example.mobiledevlabs.data.network.HttpClientProvider
-import com.example.mobiledevlabs.fragments.home.HomeUiState
-import io.ktor.client.plugins.ClientRequestException
-import io.ktor.client.plugins.ServerResponseException
-import io.ktor.utils.io.errors.IOException
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
 
-class HomeViewModel : ViewModel() {
-
-    private val client = HttpClientProvider.client
-    private val repository = CharacterRepository(client)
+class HomeViewModel(
+    private val repository: CharacterRepository
+) : ViewModel() {
 
     private val _uiState = MutableStateFlow<HomeUiState>(HomeUiState.Loading)
     val uiState: StateFlow<HomeUiState> = _uiState
 
+    val characters: StateFlow<List<Character>> =
+        repository.observeCharacters()
+            .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    private var currentFrom = 1201
+    private var currentTo = 1250
+    private val pageSize = 10
+
     init {
-        loadCharacters()
+        coldStart()
     }
 
-    fun loadCharacters() {
-        _uiState.value = HomeUiState.Loading
+    private fun coldStart() {
         viewModelScope.launch {
             try {
-                val characters = repository.getCharacters(1201, 1250)
-                _uiState.value = HomeUiState.Success(characters)
-            } catch (e: IOException) {
-                _uiState.value = HomeUiState.Error.NoInternet
-            } catch (e: ServerResponseException) {
-                _uiState.value = HomeUiState.Error.Server
-            } catch (e: ClientRequestException) {
-                _uiState.value = HomeUiState.Error.Server
+                _uiState.value = HomeUiState.Loading
+                repository.ensureCharactersLoaded(currentFrom, currentTo)
+                _uiState.value = HomeUiState.Content
             } catch (e: Exception) {
-                _uiState.value = HomeUiState.Error.Unknown(e.message ?: "Unknown error")
+                _uiState.value = HomeUiState.Error(e.message ?: "Ошибка загрузки")
+            }
+        }
+    }
+
+    fun refresh() {
+        viewModelScope.launch {
+            try {
+                _uiState.value = HomeUiState.Loading
+                repository.refresh(currentFrom, currentTo)
+                _uiState.value = HomeUiState.Content
+            } catch (e: Exception) {
+                _uiState.value = HomeUiState.Error(e.message ?: "Ошибка обновления")
+            }
+        }
+    }
+
+    fun loadMore() {
+        viewModelScope.launch {
+            try {
+                val nextFrom = currentTo + 1
+                val nextTo = currentTo + pageSize
+
+                repository.loadMore(nextFrom, nextTo)
+
+                currentFrom = 1201
+                currentTo = nextTo
+            } catch (e: Exception) {
+                _uiState.value = HomeUiState.Error(e.message ?: "Ошибка дозагрузки")
             }
         }
     }

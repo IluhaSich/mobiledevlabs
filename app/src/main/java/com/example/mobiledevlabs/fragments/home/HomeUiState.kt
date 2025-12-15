@@ -1,17 +1,7 @@
-package com.example.mobiledevlabs.fragments.home
-
-import com.example.mobiledevlabs.data.model.Character
+package com.example.mobiledevlabs.ui.fragments.home
 
 sealed interface HomeUiState {
     object Loading : HomeUiState
-
-    data class Success(
-        val characters: List<Character>
-    ) : HomeUiState
-
-    sealed interface Error : HomeUiState {
-        object NoInternet : Error
-        object Server : Error
-        data class Unknown(val message: String) : Error
-    }
+    object Content : HomeUiState
+    data class Error(val message: String) : HomeUiState
 }

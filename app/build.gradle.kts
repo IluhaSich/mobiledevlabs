@@ -5,6 +5,7 @@ plugins {
     kotlin("plugin.serialization") version "2.0.21"
     id("kotlin-parcelize")
     alias(libs.plugins.safeArgs)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -74,4 +75,8 @@ dependencies {
     implementation(libs.coil.network)
 
     implementation(libs.androidx.datastore)
+
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.runtime)
 }
