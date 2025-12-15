@@ -58,18 +58,18 @@ internal fun CharacterCard(
     }
 }
 
-@Preview
-@LightModePreview
-@Composable
-private fun CharacterCardPreview() {
-    val character = Character(
-        name = "Name",
-        culture = "culture",
-        born = "born",
-        titles = "titles",
-        aliases = "aliases",
-        playedBy = "playedBy"
-    )
-
-    CharacterCard(character = character)
-}
+//@Preview
+//@LightModePreview
+//@Composable
+//private fun CharacterCardPreview() {
+//    val character = Character(
+//        name = "Name",
+//        culture = "culture",
+//        born = "born",
+//        titles = "titles",
+//        aliases = "aliases",
+//        playedBy = "playedBy"
+//    )
+//
+//    CharacterCard(character = character)
+//}

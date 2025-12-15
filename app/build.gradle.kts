@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     kotlin("plugin.serialization") version "2.0.21"
+    id("kotlin-parcelize")
     alias(libs.plugins.safeArgs)
 }
 
@@ -52,6 +53,7 @@ dependencies {
     api(libs.androidx.ui.tooling.preview)
     api(libs.androidx.material3)
     api(libs.androidx.fragment)
+    api(libs.androidx.material.icons.extended)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.androidx.navigation.fragment)
@@ -70,4 +72,6 @@ dependencies {
 
     implementation(libs.coil.compose)
     implementation(libs.coil.network)
+
+    implementation(libs.androidx.datastore)
 }

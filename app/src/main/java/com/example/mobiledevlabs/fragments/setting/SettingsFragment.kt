@@ -1,22 +1,20 @@
-package com.example.mobiledevlabs.fragments
+package com.example.mobiledevlabs.fragments.setting
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.mobiledevlabs.R
-import com.example.mobiledevlabs.ui.screens.HomeScreen
+import com.example.mobiledevlabs.fragments.setting.SettingsViewModel
+import com.example.mobiledevlabs.ui.screens.SettingsScreen
 import com.example.mobiledevlabs.ui.theme.MobiledevlabsTheme
-import com.example.mobiledevlabs.ui.fragments.home.HomeViewModel
 
-class HomeFragment : Fragment() {
+class SettingsFragment : Fragment() {
 
-    private val vm: HomeViewModel by viewModels()
+    private val vm: SettingsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,11 +24,9 @@ class HomeFragment : Fragment() {
         return ComposeView(requireContext()).apply {
             setContent {
                 MobiledevlabsTheme {
-                    HomeScreen(
+                    SettingsScreen(
                         viewModel = vm,
-                        onSettingsClick = {
-                            findNavController().navigate(R.id.action_home_to_settings)
-                        }
+                        onBack = { findNavController().popBackStack() }
                     )
                 }
             }

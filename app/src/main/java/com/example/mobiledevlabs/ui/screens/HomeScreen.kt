@@ -11,7 +11,9 @@ import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -21,6 +23,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import com.example.mobiledevlabs.core_ui.*
 import com.example.mobiledevlabs.fragments.home.HomeUiState
 import com.example.mobiledevlabs.ui.components.CharacterCard
@@ -29,6 +32,7 @@ import com.example.mobiledevlabs.ui.fragments.home.HomeViewModel
 
 @Composable
 internal fun HomeScreen(
+    onSettingsClick: () -> Unit = {},
     viewModel: HomeViewModel,
     modifier: Modifier = Modifier
 ) {
@@ -86,5 +90,11 @@ internal fun HomeScreen(
                 }
             }
         }
+
+        Button(onClick = onSettingsClick) {
+            Text("Настройки")
+        }
+
+
     }
 }

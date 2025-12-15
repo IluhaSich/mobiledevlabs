@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:startDestination="@id/onboardFragment">
 
@@ -10,7 +9,7 @@
 
         <action
             android:id="@+id/action_onboard_to_signIn"
-            app:destination="@id/signInFragment"/>
+            app:destination="@id/signInFragment" />
     </fragment>
 
     <fragment
@@ -41,17 +40,27 @@
             app:destination="@id/signUpFragment" />
     </fragment>
 
-
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.example.mobiledevlabs.fragments.SignUpFragment">
 
         <action
             android:id="@+id/action_signUp_to_signIn"
-            app:destination="@id/signInFragment"/>
+            app:destination="@id/signInFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.mobiledevlabs.fragments.HomeFragment"/>
+        android:name="com.example.mobiledevlabs.fragments.HomeFragment">
+
+        <action
+            android:id="@+id/action_home_to_settings"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.mobiledevlabs.fragments.setting.SettingsFragment" />
+
+
 </navigation>
