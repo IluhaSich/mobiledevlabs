@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.mobiledevlabs.R
 import com.example.mobiledevlabs.activities.MainActivity
 import com.example.mobiledevlabs.ui.screens.OnboardScreen
 import com.example.mobiledevlabs.ui.theme.MobiledevlabsTheme
@@ -21,12 +23,20 @@ class OnboardFragment() : Fragment() {
             setContent {
                 MobiledevlabsTheme(darkTheme = false, dynamicColor = false) {
                     OnboardScreen(
-                        onNext = {
-                            (activity as? MainActivity)?.navigateToSignIn()
-                        }
+                        onNext = ::navigateNext
                     )
                 }
             }
         }
+    }
+
+    private fun navigateNext() {
+        findNavController().navigate(
+            OnboardFragmentDirections.actionOnboardToSignIn(
+                email = "",
+                password = "",
+                user = null
+            )
+        )
     }
 }

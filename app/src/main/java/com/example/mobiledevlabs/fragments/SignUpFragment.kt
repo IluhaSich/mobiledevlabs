@@ -7,9 +7,13 @@ import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
+import androidx.navigation.findNavController
+import com.example.mobiledevlabs.R
 import com.example.mobiledevlabs.activities.MainActivity
 import com.example.mobiledevlabs.ui.screens.SignUpScreen
 import com.example.mobiledevlabs.ui.theme.MobiledevlabsTheme
+import androidx.navigation.fragment.findNavController
+import com.example.mobiledevlabs.User
 
 internal class SignUpFragment : Fragment() {
 
@@ -23,39 +27,30 @@ internal class SignUpFragment : Fragment() {
                 MobiledevlabsTheme(darkTheme = false, dynamicColor = false) {
                     SignUpScreen(
                         onSignUp = { firstName, lastName, email, password ->
-                            val bundle = Bundle().apply {
-                                putString(EMAIL, email)
-                                putString(PASSWORD, password)
-                            }
-
-                            setFragmentResult(
-                                requestKey = SignInFragment.KEY,
-                                result = bundle
+                            navigateToSignIn(
+                                email = email,
+                                password = password
                             )
-
-                            (activity as? MainActivity)?.navigateToSignIn()
                         },
-                        onLogin = { (activity as? MainActivity)?.navigateToSignIn() },
-                        onSignUpWithObject = { user ->
-                            val bundle = Bundle().apply {
-                                putSerializable(USER, user)
-                            }
-
-                            setFragmentResult(
-                                requestKey = SignInFragment.KEY,
-                                result = bundle
-                            )
-
-                            (activity as? MainActivity)?.navigateToSignIn()
-                        }
+                        onLogin = { navigateToSignIn() },
+                        onSignUpWithObject = { user -> navigateToSignIn(user = user) }
                     )
                 }
             }
         }
     }
-    companion object {
-        const val USER = "user"
-        const val EMAIL = "email"
-        const val PASSWORD = "password"
+
+    private fun navigateToSignIn(
+        email: String = "",
+        password: String = "",
+        user: User? = null
+    ) {
+        val direction = SignUpFragmentDirections.actionSignUpToSignIn(
+            email = email,
+            password = password,
+            user = user
+        )
+
+        findNavController().navigate(direction)
     }
 }

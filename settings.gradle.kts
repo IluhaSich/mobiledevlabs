@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "mobiledevlabs"
 include(":app")
- 
+include(":core_ui")
