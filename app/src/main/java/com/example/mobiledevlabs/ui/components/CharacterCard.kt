@@ -21,15 +21,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.mobiledevlabs.core_ui.*
+import com.example.mobiledevlabs.data.model.Character
 import androidx.compose.ui.unit.dp
 
 @Composable
 internal fun CharacterCard(
-    name: String,
-    gender: String,
-    culture: String,
-    born: String,
-    onDetailed: () -> Unit,
+    character: Character,
     modifier: Modifier = Modifier,
 ) {
     val dimensions = LocalDimensions.current
@@ -52,74 +49,27 @@ internal fun CharacterCard(
         verticalArrangement = Arrangement.spacedBy(dimensions.paddings.paddingM),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            text = name,
-            textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.headlineMedium,
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Text(
-            text = gender,
-            textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Text(
-            text = culture,
-            textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Text(
-            text = born,
-            textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Button(
-            modifier = Modifier.defaultMinSize(
-                minWidth = dimensions.buttonDefaults.defaultWidth,
-                minHeight = dimensions.buttonDefaults.defaultHeight
-            ),
-            shape = buttonShape,
-            onClick = onDetailed
-        ) {
-            Text("Посмотреть")
-        }
+        Text(text = character.name, textAlign = TextAlign.Center, style = MaterialTheme.typography.headlineMedium, modifier = Modifier.fillMaxWidth())
+        Text(text = "culture: " + character.culture, textAlign = TextAlign.Center, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.fillMaxWidth())
+        Text(text = "born: " + character.born, textAlign = TextAlign.Center, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.fillMaxWidth())
+        Text(text = "titles: " + character.titles, textAlign = TextAlign.Center, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.fillMaxWidth())
+        Text(text = "aliases: " + character.aliases, textAlign = TextAlign.Center, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.fillMaxWidth())
+        Text(text = "playedBy: " + character.playedBy, textAlign = TextAlign.Center, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.fillMaxWidth())
     }
 }
 
 @Preview
+@LightModePreview
 @Composable
-private fun CardPreview() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .statusBarsPadding()
-            .navigationBarsPadding()
-            .verticalScroll(rememberScrollState())
-            .padding(LocalDimensions.current.paddings.paddingM),
-        verticalArrangement = Arrangement.spacedBy(LocalDimensions.current.paddings.paddingM)
-    ) {
-        CharacterCard(
-            name = "Jon Snow",
-            gender = "Male",
-            culture = "Northmen",
-            born = "In 283 AC",
-            onDetailed = {},
-        )
-        CharacterCard(
-            name = "Jon Snow",
-            gender = "Male",
-            culture = "Northmen",
-            born = "In 283 AC",
-            onDetailed = {},
-        )
+private fun CharacterCardPreview() {
+    val character = Character(
+        name = "Name",
+        culture = "culture",
+        born = "born",
+        titles = "titles",
+        aliases = "aliases",
+        playedBy = "playedBy"
+    )
 
-    }
-
+    CharacterCard(character = character)
 }

@@ -56,12 +56,12 @@ fun BaseScreen(
                 modifier = Modifier
                     .padding(systemPaddings)
                     .padding(horizontal = dimensions.paddings.paddingM)
-                    .verticalScroll(rememberScrollState())
-                    .padding(vertical = dimensions.paddings.paddingS),
+                    .padding(vertical = dimensions.paddings.paddingS), // убрали verticalScroll
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(dimensions.paddings.paddingM),
                 content = content
             )
         }
+
     }
 }

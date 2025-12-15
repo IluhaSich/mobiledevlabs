@@ -6,14 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResult
-import androidx.navigation.findNavController
-import com.example.mobiledevlabs.R
-import com.example.mobiledevlabs.activities.MainActivity
 import com.example.mobiledevlabs.ui.screens.SignUpScreen
 import com.example.mobiledevlabs.ui.theme.MobiledevlabsTheme
 import androidx.navigation.fragment.findNavController
-import com.example.mobiledevlabs.User
+import com.example.mobiledevlabs.data.model.User
 
 internal class SignUpFragment : Fragment() {
 

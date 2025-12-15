@@ -13,7 +13,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.mobiledevlabs.User
+import com.example.mobiledevlabs.data.model.User
 import com.example.mobiledevlabs.ui.screens.SignInScreen
 import com.example.mobiledevlabs.ui.theme.MobiledevlabsTheme
 

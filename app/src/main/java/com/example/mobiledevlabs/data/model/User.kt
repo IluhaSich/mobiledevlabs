@@ -1,7 +1,6 @@
-package com.example.mobiledevlabs
+package com.example.mobiledevlabs.data.model
 
 import java.io.Serializable
-
 
 data class User(
     val name: String,

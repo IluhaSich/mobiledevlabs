@@ -29,7 +29,7 @@
 
         <argument
             android:name="user"
-            app:argType="com.example.mobiledevlabs.User"
+            app:argType="com.example.mobiledevlabs.data.model.User"
             app:nullable="true" />
 
         <action
