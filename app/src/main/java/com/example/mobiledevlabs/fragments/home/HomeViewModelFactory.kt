@@ -3,7 +3,6 @@ package com.example.mobiledevlabs.fragments.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.mobiledevlabs.data.CharacterRepository
-import com.example.mobiledevlabs.ui.fragments.home.HomeViewModel
 
 class HomeViewModelFactory(
     private val repository: CharacterRepository

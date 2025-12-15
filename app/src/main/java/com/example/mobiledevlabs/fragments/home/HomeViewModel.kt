@@ -1,9 +1,10 @@
-package com.example.mobiledevlabs.ui.fragments.home
+package com.example.mobiledevlabs.fragments.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mobiledevlabs.data.CharacterRepository
 import com.example.mobiledevlabs.data.model.Character
+import com.example.mobiledevlabs.ui.fragments.home.HomeUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.SharingStarted

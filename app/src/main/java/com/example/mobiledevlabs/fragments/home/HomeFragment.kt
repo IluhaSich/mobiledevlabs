@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -15,7 +14,7 @@ import com.example.mobiledevlabs.data.network.HttpClientProvider
 import com.example.mobiledevlabs.fragments.home.HomeViewModelFactory
 import com.example.mobiledevlabs.ui.screens.HomeScreen
 import com.example.mobiledevlabs.ui.theme.MobiledevlabsTheme
-import com.example.mobiledevlabs.ui.fragments.home.HomeViewModel
+import com.example.mobiledevlabs.fragments.home.HomeViewModel
 
 class HomeFragment : Fragment() {
 

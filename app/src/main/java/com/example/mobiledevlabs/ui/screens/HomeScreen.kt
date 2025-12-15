@@ -13,7 +13,7 @@ import com.example.mobiledevlabs.core_ui.BaseScreen
 import com.example.mobiledevlabs.core_ui.VerticalSpacer
 import com.example.mobiledevlabs.ui.components.CharacterCard
 import com.example.mobiledevlabs.ui.fragments.home.HomeUiState
-import com.example.mobiledevlabs.ui.fragments.home.HomeViewModel
+import com.example.mobiledevlabs.fragments.home.HomeViewModel
 
 @Composable
 internal fun HomeScreen(
